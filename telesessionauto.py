@@ -156,7 +156,6 @@ while True:
     # Nama file sesi untuk menyimpan login Anda
 
     # Username bot yang memiliki Web App
-    bot_username = 'buzz_mine_bot'
     path = os.path.join('session',number)
     client = TelegramClient(path, api_id=api_id, api_hash=api_hash)
     client.connect()
@@ -171,4 +170,5 @@ while True:
             client.sign_in(password=password)
     with open('telesession.txt','a')as f:
         f.write(f'{number}|{api_hash}|{api_id}\n')
+
     client.disconnect()
