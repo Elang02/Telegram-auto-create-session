@@ -31,7 +31,6 @@ while True:
         'sec-fetch-site': 'same-origin',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
         'x-requested-with': 'XMLHttpRequest',
-        # 'cookie': 'stel_acid=FXnTRCIKUKCdedjhsoAkl6Pohtkby9TlJUGLiOnBAkbnVmV-gQaejsS9UYHsLRwT',
     }
 
     data = {
@@ -58,7 +57,6 @@ while True:
         'sec-fetch-site': 'same-origin',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
         'x-requested-with': 'XMLHttpRequest',
-        # 'cookie': 'stel_acid=FXnTRCIKUKCdedjhsoAkl6Pohtkby9TlJUGLiOnBAkbnVmV-gQaejsS9UYHsLRwT',
     }
 
     data = {
@@ -107,7 +105,6 @@ while True:
         'sec-fetch-site': 'same-origin',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
         'x-requested-with': 'XMLHttpRequest',
-        # 'cookie': 'stel_acid=FXnTRCIKUKCdedjhsoAkl6Pohtkby9TlJUGLiOnBAkbnVmV-gQaejsS9UYHsLRwT; stel_token=9a36d9086830862bf2b58be82ec89dec9a36d9049a369e7e8038147a54e597a007b97',
     }
     web = ''.join(random.choice(string.ascii_lowercase) for i in range(5))
     title = ''.join(random.choice(character) for i in range(8))
@@ -139,7 +136,6 @@ while True:
         'sec-fetch-user': '?1',
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-        # 'cookie': 'stel_acid=FXnTRCIKUKCdedjhsoAkl6Pohtkby9TlJUGLiOnBAkbnVmV-gQaejsS9UYHsLRwT; stel_token=2197a6c628f537554914faea9569e2222197a6ca2197e5c497c4f62dacebb66acf107',
     }
 
     response = s.get('https://my.telegram.org/apps', headers=headers, proxies=proxies)
@@ -149,19 +145,11 @@ while True:
     api_hash = all_span[1].text
     print(api_id)
     print(api_hash)
-
-    # --- Konfigurasi ---
-    # Ganti dengan kredensial Anda dari my.telegram.org
-
-    # Nama file sesi untuk menyimpan login Anda
-
-    # Username bot yang memiliki Web App
     path = os.path.join('session',number)
     client = TelegramClient(path, api_id=api_id, api_hash=api_hash)
     client.connect()
     print("Client Telethon started...")
     if not client.is_user_authorized():
-        # Jika belum, mulai proses login dengan nomor telepon dari variabel
         client.send_code_request(number)
         try:
             client.sign_in(number, input('Masukkan kode OTP: '))
@@ -172,3 +160,4 @@ while True:
         f.write(f'{number}|{api_hash}|{api_id}\n')
 
     client.disconnect()
+
